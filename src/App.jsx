@@ -18,7 +18,7 @@ const App = () => {
   // const url = import.meta.env.BACKEND_URL;
   // const url = import.meta.env.VITE_BACKEND_URL;
   const [showLogin, setShowLogin] = useState(false);
-  console.log(url + "  makdjfbasd");
+  // console.log(url + "  makdjfbasd");
   return (
     <div className="container">
       <ToastContainer />
