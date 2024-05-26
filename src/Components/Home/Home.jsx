@@ -7,13 +7,13 @@ import "./Home.css";
 const Home = () => {
   const { token, admindetails } = useContext(DataContext);
   return (
-    <div className="bg-secondary bg-opacity-25">
+    <div className="bg-secondary bg-opacity-25 rounded px-3 pb-2">
       <div>
         <div>
           {!token ? (
-            <div>
-              <div className="text-center space">
-                <h1 className="fw-bold fs-1 text-decoration-underline link-underline-danger">
+            <div className="">
+              <div className="text-center space ">
+                <h1 className="fw-bold fs-1 text-decoration-underline link-underline-danger pt-3">
                   Login to your account
                 </h1>
               </div>
@@ -86,7 +86,7 @@ const Home = () => {
           {token && !admindetails.approved ? (
             <div>
               <div className="text-center space">
-                <h1 className="m-3 fw-bold fs-1 text-decoration-underline link-underline-danger">
+                <h1 className="m-3 fw-bold fs-1 text-decoration-underline link-underline-danger pt-3">
                   Your account is under processing
                 </h1>
                 <p className="lead">
