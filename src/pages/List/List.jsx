@@ -18,7 +18,7 @@ const List = () => {
     // console.log(response.data);
     if (response.data.success) {
       // this excutes only when the data is loaded in response variable
-      setList(response.data.data); // data is saved in List variable
+      setList(response.data.data.reverse()); // data is saved in List variable
     } else {
       toast.error("Error");
     }

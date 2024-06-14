@@ -30,13 +30,23 @@ const Add = () => {
       "fivestar",
       "teawonders",
     ],
-    Stationary: ["Select the Stall", "Upcoming"],
+    Stationary: [
+      "Select the Stall",
+      "books",
+      "writingmaterials",
+      "records",
+      "sheets",
+      "papergoods",
+      "items",
+      "printouts",
+    ],
   };
   const categorys = {
     continentalcoffee: [
       "Select the Category",
       "WinterSpecial",
       "Noodles",
+      "Momos",
       "Omelette",
       "Fries",
       "Others",
@@ -45,29 +55,52 @@ const Add = () => {
       "Select the Category",
       "Shakes",
       "Mocktails",
-      "Big Data Analytics",
-      "Cloud Computing",
-      "Embedded Systems",
+      "Lassi",
+      "Natural Juice",
+      "Tea & Coffee",
     ],
-    Ph_D: ["Select the Branch", "Upcoming"],
-    Science_UG_Programs: [
-      "Select the Branch",
-      "B.Sc - Computer Science",
-      "B.Sc - Data Science",
-      "B.Sc - Data Analytics",
-      "B.Sc - Maths Statistics Computers",
-      "B.Sc - Cyber Security",
-      "B.Sc - Digital Forensics",
-      "B.Sc - AI & ML",
-      "B.Sc - Multimedia & Animation",
-      "B.Sc - Visual Communication",
+    burgerking: ["Select the Category", "Veg", "Non Veg"],
+    hakkawok: [
+      "Select the Category",
+      "Rice",
+      "Noodles",
+      "Combos Veg",
+      "Combos Non Veg",
     ],
-    Science_PG_Programs: ["Select the Branch", "Guadalajara"],
-    Allied_Health_Sciences_UG: ["Select the Branch", "Guadalajara"],
-    Physiotherapy_Cources_UG: ["Select the Branch", "Guadalajara"],
-    M_Sc_Cources_PG: ["Select the Branch", "Guadalajara"],
-    BBA_Programs: ["Select the Branch", "Guadalajara"],
-    MBA_Programs: ["Select the Branch", "Guadalajara"],
+    fivestar: ["Select the Category", "Chicken", "Veg Items", "Snacks"],
+    teawonders: [
+      "Select the Category",
+      "Cakes",
+      "Ice Creams",
+      "Chocolates",
+      "Biscuits",
+      "Cool Drinks",
+      "Tea & Coffee",
+      "Others",
+    ],
+    books: ["Select the Category", "Long Books", "Short Books", "Medium Books"],
+    writingmaterials: [
+      "Select the Category",
+      "Pens",
+      "Pencils",
+      "Color_Materials",
+    ],
+    records: ["Select the Category", "R20", "R22", "R23"],
+    sheets: ["Select the Category", "A4 Size", "A Charts"],
+    papergoods: [
+      "Select the Category",
+      "Letter Paper",
+      "Envelopes",
+      "Greeting Cards",
+    ],
+    items: [
+      "Select the Category",
+      "Files",
+      "Clips",
+      "Smart Gadgets",
+      "All Items",
+    ],
+    printouts: ["Select the Category", "A4 Sheet", "Thick Paper"],
   };
 
   //for image
@@ -283,7 +316,10 @@ const Add = () => {
                       value={data.type}
                     >
                       <option key="Select">Select</option>
-                      <option key={admindetails.type} value={admindetails.admintype}>
+                      <option
+                        key={admindetails.type}
+                        value={admindetails.admintype}
+                      >
                         {admindetails.admintype}
                       </option>
                     </select>

@@ -82,6 +82,12 @@ const LoginSignUp = ({ setShowLogin }) => {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const showHandler = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="login-popup">
       <form
@@ -99,7 +105,7 @@ const LoginSignUp = ({ setShowLogin }) => {
           />
         </div>
         <div>
-          {currentState === "Sign Up" || currentState === "Business Sign Up" ? (
+          {currentState === "Sign Up" ? (
             <input
               name="name"
               onChange={onChangeHandler}
@@ -130,30 +136,43 @@ const LoginSignUp = ({ setShowLogin }) => {
           </div>
 
           <div className="">
-            <div className=" mb-2">
+            <div className="input-group mb-2">
               <input
                 name="password"
                 onChange={onChangeHandler}
                 value={data.password}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className="form-control"
                 id="exampleInputEmail1"
                 placeholder="Password"
                 aria-describedby="emailHelp"
                 required
               />
+              <img
+                width="48"
+                className="input-group-text rounded-end-2"
+                onClick={() => showHandler()}
+                src={showPassword ? assets.Eye_Visible : assets.Eye_Not_Visible}
+              />
             </div>
-            {currentState === "Sign Up" ||
-            currentState === "Business Sign Up" ? (
-              <div className="mb-2">
+            {currentState === "Sign Up" ? (
+              <div className="input-group mb-2">
                 <input
                   name="confirmpassword"
                   onChange={onChangeHandler}
                   value={data.confirmpassword}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   className="form-control"
                   placeholder="Confirm Password"
                   required
+                />
+                <img
+                  width="48"
+                  className="input-group-text rounded-end-2"
+                  onClick={() => showHandler()}
+                  src={
+                    showPassword ? assets.Eye_Visible : assets.Eye_Not_Visible
+                  }
                 />
               </div>
             ) : (
@@ -200,7 +219,7 @@ const LoginSignUp = ({ setShowLogin }) => {
             <></>
           )}
 
-          {currentState === "Sign Up" || currentState === "Business Sign Up" ? (
+          {currentState === "Sign Up" ? (
             <div className="">
               <input
                 name="phonenumber"
@@ -222,7 +241,7 @@ const LoginSignUp = ({ setShowLogin }) => {
           <input type="checkbox" className="p-5" required></input>
           <p className="m-2">Accept terms and conditions</p>
         </div>
-        {currentState === "Login" || currentState === "Business Login" ? (
+        {currentState === "Login" ? (
           <p>
             Create a new account?{" "}
             <span
@@ -237,7 +256,7 @@ const LoginSignUp = ({ setShowLogin }) => {
         ) : (
           <></>
         )}
-        {currentState === "Sign Up" || currentState === "Business Sign Up" ? (
+        {currentState === "Sign Up" ? (
           <p>
             Already have an account?{" "}
             <span

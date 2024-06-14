@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginSignUp from "./Components/LoginSignUp/LoginSignUp";
 import Profile from "./pages/Profile/Profile";
 import Home from "./Components/Home/Home";
+import ContactUs from "./pages/ContactUs/ContactUs";
 // import "dotenv/config.js";
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
               <Route path="/add" element={<Add />} />
               <Route path="/list" element={<List />} />
               <Route path="/orders" element={<Orders />} />
+              <Route path="/contactus" element={<ContactUs />} />
             </Routes>
           </div>
         </div>

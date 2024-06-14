@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Home from "../../Components/Home/Home.jsx";
 
 const Orders = () => {
-  const { token, admindetails,url } = useContext(DataContext);
+  const { token, admindetails, url } = useContext(DataContext);
 
   const [orders, setOrders] = useState([]);
 
@@ -54,115 +54,91 @@ const Orders = () => {
             Orders
           </h1>
           <div>
-            {orders.map((order, index) =>
-             {
-              if(order.items) {
-                return(order.items.map((check) => {
-                console.log(check.type + " hi " + check.stall_name);
-                console.log(
-                  admindetails.admintype +
-                    " Hello " +
-                    admindetails.admincategory
-                );
-                if (
-                  (check.type === admindetails.admintype &&
-                    check.stall_name === admindetails.admincategory) ||
-                  admindetails.admintype === "2111CS010283"
-                ) {
-                  console.log(check.type + " Inside hi " + check.stall_name);
-                  console.log(
-                    admindetails.admintype + " Inside Hello " + order.status
-                  );
-                  return (
-                    <div
-                      className={
-                        order.status === "Delivered"
-                          ? "bg-success rounded py-1"
-                          : ""
-                      }
-                    >
-                      <div
-                        key={index}
-                        className={
-                          order.ordercanceled
-                            ? "row border border-warning border-2 rounded p-2 m-4 bg-danger"
-                            : "row border border-warning border-2 rounded p-2 m-4  "
-                        }
-                      >
-                        <div className="col-md-1">
-                          <img
-                            className=""
-                            src={assert.Parcel_Icon}
-                            width="36"
-                          />
-                        </div>
+            {orders.map((order, index) => (
+              <div
+                className={
+                  order.status === "Delivered" ? "bg-success rounded py-1" : ""
+                }
+              >
+                <div
+                  key={index}
+                  className={
+                    order.ordercanceled
+                      ? "row border border-warning border-2 rounded p-2 m-4 bg-danger"
+                      : "row border border-warning border-2 rounded p-2 m-4  "
+                  }
+                >
+                  <div className="col-md-1 text-center">
+                    <img className="" src={assert.Parcel_Icon} width="36" />
+                    <p className="bg-dark fw-bold text-light py-1 mt-3 text-center">
+                      {order.orderId}
+                    </p>
+                  </div>
 
-                        <div className="col-md-4">
-                          <div>
-                            {order.items.map((item, index1) => {
-                              if (index === order.items.length - 1) {
-                                return item.name + " x " + item.quantity;
-                              } else {
-                                return item.name + " x " + item.quantity + ", ";
-                              }
-                            })}
-                          </div>
-                          <div>
-                            {order.address.firstname +
-                              " " +
-                              order.address.lastname}
-                            <div>
-                              <p>
-                                {order.address.school}
-                                {"\t,"}
-                                {order.address.course}
-                                {"\t,"}
-                                {order.address.branch}
-                              </p>
-                            </div>
-                            <div>{order.address.phonenumber}</div>
-                          </div>
-                        </div>
-                        <div className="col-md-3">
-                          <div>
-                            <i>Items:</i> {order.items.length}
-                          </div>
-                          <div>
-                            <i>Items Amount:</i>{" "}
-                            {order.amount + order.discount - order.delivery}
-                          </div>
-                          <div>
-                            <i>Delivery Amount:</i> {order.delivery}
-                          </div>
-                          <div>
-                            <i>Discount Recieved:</i> {order.discount}
-                          </div>
-                          <div>
-                            <i>Amount:</i> {order.amount}
-                          </div>
-                        </div>
-                        <div className="col-md-2 pt-2 ">
-                          {order.ordercanceled ? (
-                            <div className="mt-4">
-                              {" "}
-                              <p className=" border border-5 border-dark  fw-bold  p-2 m-1 bg-secondary bg-opacity-75">
-                                Order Canceled
-                              </p>
-                            </div>
-                          ) : (
-                            <div className="">
-                              <i>Delivery Status: </i>
-                              {order.address.delivery
-                                ? "hello No delivery"
-                                : `Delivery to ${
-                                    order.address.deliverytoclass
-                                      ? "Classroom"
-                                      : "Building"
-                                  }`}
-                            </div>
-                          )}
-                        </div>
-                        {/* {
+                  <div className="col-md-4">
+                    <div>
+                      {order.items.map((item, index1) => {
+                        if (index === order.items.length - 1) {
+                          return item.name + " x " + item.quantity;
+                        } else {
+                          return item.name + " x " + item.quantity + ", ";
+                        }
+                      })}
+                    </div>
+                    <div>
+                      {order.address.firstname + " " + order.address.lastname}
+                      <div>
+                        <p>
+                          {order.address.school}
+                          {"\t,"}
+                          {order.address.course}
+                          {"\t,"}
+                          {order.address.branch}
+                        </p>
+                      </div>
+                      <div>{order.address.phonenumber}</div>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div>
+                      <i>Items:</i> {order.items.length}
+                    </div>
+                    <div>
+                      <i>Items Amount:</i>{" "}
+                      {order.amount + order.discount - order.delivery}
+                    </div>
+                    <div>
+                      <i>Delivery Amount:</i> {order.delivery}
+                    </div>
+                    <div>
+                      <i>Discount Recieved:</i> {order.discount}
+                    </div>
+                    <div>
+                      <i>Amount:</i> {order.amount}
+                    </div>
+                  </div>
+                  <div className="col-md-2 pt-2 ">
+                    {order.ordercanceled ? (
+                      <div className="mt-4">
+                        {" "}
+                        <p className=" border border-5 border-dark  fw-bold  p-2 m-1 bg-secondary bg-opacity-75">
+                          Order Canceled
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="">
+                        <i>Delivery Status: </i>
+                        {order.address.delivery
+                          ? "hello No delivery"
+                          : `Delivery to ${
+                              order.address.deliverytoclass
+                                ? "Classroom"
+                                : "Building"
+                            }`}
+                      </div>
+                    )}
+                  </div>
+                  {/* {
       if (order.address.deliverytoclass) {
         setDeliveryType("Delivery to Classroom")
       } else if (order.address.deliverytobuilding) {
@@ -171,57 +147,52 @@ const Orders = () => {
         setDeliveryType("hello No delivery")
       }
     } */}
-                        <div className="col-md-2">
-                          {order.ordercanceled ? (
-                            <div className="mt-2 text-center bg-danger bg-opacity-25 p-1 border border-dark border-2">
-                              <div className="fw-bold text-decoration-underline">
-                                Canceled Amount status:{" "}
-                              </div>
-                              {order.address.canceledorderpayment ? (
-                                <span className="text-warning fw-bold bg-success px-3 rounded">
-                                  Paid
-                                </span>
-                              ) : (
-                                <span className="text-warning">Not Paid</span>
-                              )}
-
-                              <div className="bg-dark text-danger py-2 fs-3 rounded fw-bold">
-                                {Math.round(`${(30 * order.amount) / 100}`)}/-
-                              </div>
-                            </div>
-                          ) : (
-                            <div>
-                              <select
-                                onChange={(event) =>
-                                  updateStatusHandler(event, order._id)
-                                }
-                                value={order.status}
-                                className="form-select"
-                                aria-label="Default select example"
-                              >
-                                <option value="Items are Processing" selected>
-                                  Items are Processing
-                                </option>
-                                <option value="Out for Delivery">
-                                  Out for Delivery
-                                </option>
-                                <option value="Delivered">Delivered</option>
-                              </select>
-                              <div className="fs-6">
-                                <p>Placed On: {order.date}</p>
-                              </div>
-                            </div>
-                          )}
+                  <div className="col-md-2">
+                    {order.ordercanceled ? (
+                      <div className="mt-2 text-center bg-danger bg-opacity-25 p-1 border border-dark border-2">
+                        <div className="fw-bold text-decoration-underline">
+                          Canceled Amount status:{" "}
                         </div>
-                        <div></div>
+                        {order.address.canceledorderpayment ? (
+                          <span className="text-warning fw-bold bg-success px-3 rounded">
+                            Paid
+                          </span>
+                        ) : (
+                          <span className="text-warning">Not Paid</span>
+                        )}
+
+                        <div className="bg-dark text-danger py-2 fs-3 rounded fw-bold">
+                          {Math.round(`${(30 * order.amount) / 100}`)}/-
+                        </div>
                       </div>
-                    </div>
-                  );
-                }
-              }))
-              }
-              
-            })}
+                    ) : (
+                      <div>
+                        <select
+                          onChange={(event) =>
+                            updateStatusHandler(event, order._id)
+                          }
+                          value={order.status}
+                          className="form-select"
+                          aria-label="Default select example"
+                        >
+                          <option value="Items are Processing" selected>
+                            Items are Processing
+                          </option>
+                          <option value="Out for Delivery">
+                            Out for Delivery
+                          </option>
+                          <option value="Delivered">Delivered</option>
+                        </select>
+                        <div className="fs-6">
+                          <p>Placed On: {order.date}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       ) : (

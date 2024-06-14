@@ -25,9 +25,10 @@ const NavBar = ({ setShowLogin }) => {
     <div className="border border-danger border-top-0 border-start-0 border-end-0 border-5 ">
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
-        <Link to="/"><img src={assets.logo} width="102" /></Link>
-          
-          
+          <Link to="/">
+            <img src={assets.logo} width="102" />
+          </Link>
+
           {/* {!token ? (
             <li className="nav-link">
               <button
@@ -70,6 +71,9 @@ const NavBar = ({ setShowLogin }) => {
             </li>
           )} */}
           <div className="d-flex">
+            <Link to="/contactus">
+              <button className="btn btn-danger px-4 m-3 rounded-pill">Contact Us</button>
+            </Link>
             {!token ? (
               <li className="nav-link">
                 <button
